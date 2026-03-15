@@ -20,8 +20,8 @@ describe('LocationCard', () => {
   });
 
   it('renders time when provided', () => {
-    render(<LocationCard {...defaultProps} time="16:00" />);
-    expect(screen.getByText('16:00')).toBeInTheDocument();
+    render(<LocationCard {...defaultProps} time="15:30" />);
+    expect(screen.getByText('15:30')).toBeInTheDocument();
   });
 
   it('does not render time when not provided', () => {

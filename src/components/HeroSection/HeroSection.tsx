@@ -3,7 +3,7 @@ import weddingConfig from '../../config/weddingConfig';
 import { useLanguage } from '../../i18n/LanguageContext';
 import PhotoPlaceholder from '../PhotoPlaceholder/PhotoPlaceholder';
 import Navigation from '../Navigation/Navigation';
-import coupleImage from '../../assets/couple.jpg';
+import flowersImage from '../../assets/flowers.jpg';
 import styles from './HeroSection.module.css';
 
 export default function HeroSection() {
@@ -30,7 +30,7 @@ export default function HeroSection() {
   return (
     <section
       className={styles.hero}
-      style={{ '--hero-bg-image': `url(${coupleImage})` } as React.CSSProperties}
+      style={{ '--hero-bg-image': `url(${flowersImage})` } as React.CSSProperties}
     >
       <div className={styles.content}>
         <div className={styles.photo}>

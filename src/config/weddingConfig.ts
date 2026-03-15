@@ -81,7 +81,7 @@ const weddingConfig: WeddingConfig = {
     ceremony: {
       venueName: "Chiesa di Santa Maria a Mercatale",
       address: "Via A. Gramsci, 4, 50020 Mercatale In Val di Pesa FI, Italy",
-      time: "16:00",
+      time: "15:30",
       mapsUrl: "https://www.google.com/maps/place/Via+Antonio+Gramsci,+4,+50020+Mercatale+In+Val+di+Pesa+FI,+Italy/@43.6342172,11.2295468,17z",
       coordinates: [43.6347, 11.2319],
     },

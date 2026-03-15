@@ -6,7 +6,7 @@ const en: Translations = {
     map: 'Map',
     rsvp: 'RSVP',
     honeymoon: 'Honeymoon',
-    gift: 'Gift',
+    gift: 'Contribute',
   },
   hero: {
     photoAlt: 'Couple photo',
@@ -32,9 +32,9 @@ const en: Translations = {
     buttonLabel: 'RSVP',
   },
   gift: {
-    heading: 'Gift',
+    heading: 'Contribute',
     message:
-      "Your presence is the greatest gift. If you'd like to contribute, we're collecting for our honey moon trip to Canada and America.",
+      "If you would like to you can contribute to our honeymoon in Canada and United States",
     accountOwner: 'Account Owner',
     copied: 'Copied!',
     copyLabel: 'Copy',
@@ -42,7 +42,7 @@ const en: Translations = {
   honeymoon: {
     heading: 'Our Honeymoon',
     intro:
-      'After the wedding, we are embarking on a one-month adventure across Canada and the United States. Follow our journey through vibrant cities, stunning landscapes, and unforgettable train rides.',
+      'After the wedding we are embarking on an adventure across Canada and the United States. Follow our journey through vibrant cities, stunning landscapes, and unforgettable train rides.',
     fallback:
       'Map could not be loaded. Our route: Rome → Montreal → Toronto → Chicago → Denver → Glenwood Springs → Salt Lake City → Truckee → San Francisco.',
     travelModes: {
@@ -59,13 +59,13 @@ const en: Translations = {
       montreal: {
         name: 'Montreal',
         description:
-          'Historic Old Montreal, cobblestone streets, and a European feel to kick off the trip before heading west by train.',
+          'Historic Old Montreal, cobblestone streets, and a European feel to kick off the trip.',
         photoAlt: 'View of Montreal',
       },
       toronto: {
         name: 'Toronto',
         description:
-          'Visiting family, exploring the CN Tower and the Distillery District, and a day trip to Niagara Falls before our flight.',
+          'Visiting family, exploring the CN Tower and the Distillery District, and a day trip to Niagara Falls.',
         photoAlt: 'View of Toronto',
       },
       chicago: {
@@ -101,7 +101,7 @@ const en: Translations = {
       sanFrancisco: {
         name: 'San Francisco',
         description:
-          'The Golden Gate, Alcatraz, cable cars, and the Pacific coast — a perfect place to wrap up the journey.',
+          'The Golden Gate, Alcatraz, cable cars, and the Pacific coast — a perfect place to wrap up the honeymoon.',
         photoAlt: 'View of San Francisco',
       },
     },
@@ -111,7 +111,7 @@ const en: Translations = {
     placeholder: 'Photo placeholder',
   },
   footer: {
-    thankYou: 'Thank You',
+    thankYou: 'Thank you so much!',
     seeYouSoon: 'See you soon',
   },
 };

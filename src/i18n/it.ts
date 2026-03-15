@@ -6,7 +6,7 @@ const it: Translations = {
     map: 'Mappa',
     rsvp: 'RSVP',
     honeymoon: 'Luna di Miele',
-    gift: 'Regalo',
+    gift: 'Contributo',
   },
   hero: {
     photoAlt: 'Foto degli sposi',
@@ -28,13 +28,13 @@ const it: Translations = {
   rsvp: {
     heading: 'Ci Sarai?',
     description:
-      'Saremmo felicissimi di averti con noi in questo giorno speciale. Facci sapere se sarai presente e condividi eventuali esigenze alimentari, così potremo accogliere tutti al meglio.',
+      'Saremmo felicissimi di averti con noi in questo giorno speciale. Facci sapere se sarai presente e condividi eventuali esigenze alimentari, così potremo accogliervi al meglio.',
     buttonLabel: 'RSVP',
   },
   gift: {
-    heading: 'Regalo',
+    heading: 'Contributo',
     message:
-      'La vostra presenza è il regalo più bello. Se desiderate contribuire, stiamo raccogliendo per la nostra luna di miele in Canada e America.',
+      "Per chi desidera farci un regalo può contribuire alla nostra luna di miele in Canada e Stati Uniti",
     accountOwner: 'Intestatario',
     copied: 'Copiato!',
     copyLabel: 'Copia',
@@ -42,7 +42,7 @@ const it: Translations = {
   honeymoon: {
     heading: 'La Nostra Luna di Miele',
     intro:
-      'Dopo il matrimonio, partiremo per un\'avventura di un mese attraverso il Canada e gli Stati Uniti. Seguite il nostro viaggio tra città vivaci, paesaggi mozzafiato e indimenticabili viaggi in treno.',
+      'Dopo il matrimonio partiremo per un\'avventura attraverso il Canada e gli Stati Uniti. Seguite il nostro viaggio tra città vivaci e paesaggi mozzafiato.',
     fallback:
       'La mappa non è disponibile. Il nostro percorso: Roma → Montreal → Toronto → Chicago → Denver → Glenwood Springs → Salt Lake City → Truckee → San Francisco.',
     travelModes: {
@@ -59,37 +59,37 @@ const it: Translations = {
       montreal: {
         name: 'Montreal',
         description:
-          'La Montreal storica, strade acciottolate e un\'atmosfera europea per iniziare il viaggio prima di partire in treno verso ovest.',
+          'La Montreal storica, strade acciottolate e un\'atmosfera europea per iniziare il viaggio.',
         photoAlt: 'Veduta di Montreal',
       },
       toronto: {
         name: 'Toronto',
         description:
-          'Visita alla famiglia, la CN Tower, il Distillery District e una gita alle Cascate del Niagara prima del volo.',
+          'Visita alla famiglia, la CN Tower, il Distillery District e una gita alle Cascate del Niagara.',
         photoAlt: 'Veduta di Toronto',
       },
       chicago: {
         name: 'Chicago',
         description:
-          'Architettura iconica lungo il fiume, Millennium Park, il lungolago e punto di partenza del California Zephyr.',
+          'Architettura iconica lungo il fiume, Millennium Park, il lungolago ed il punto di partenza del California Zephyr.',
         photoAlt: 'Veduta di Chicago',
       },
       denver: {
         name: 'Denver',
         description:
-          'Lo storico quartiere LoDo e la porta delle Montagne Rocciose, dove il treno inizia a salire.',
+          'Lo storico quartiere LoDo e la porta d\'accesso delle Rocky Montains.',
         photoAlt: 'Veduta di Denver',
       },
       glenwoodSprings: {
         name: 'Glenwood Springs',
         description:
-          'Sorgenti termali naturali, canyon spettacolari e una tappa tranquilla lungo il percorso dello Zephyr.',
+          'Sorgenti termali naturali, canyon spettacolari e relax lungo il percorso dello Zephyr.',
         photoAlt: 'Veduta di Glenwood Springs',
       },
       saltLakeCity: {
         name: 'Salt Lake City',
         description:
-          'Dove il Grande Lago Salato incontra le Montagne Wasatch — paesaggi aperti e una città rilassata.',
+          'Dove il Grande Lago Salato incontra le Montagne Wasatch — paesaggi aperti e una città tranquilla.',
         photoAlt: 'Veduta di Salt Lake City',
       },
       truckee: {
@@ -101,7 +101,7 @@ const it: Translations = {
       sanFrancisco: {
         name: 'San Francisco',
         description:
-          'Il Golden Gate, Alcatraz, i cable car e la costa del Pacifico — il posto perfetto per concludere.',
+          'Il Golden Gate, Alcatraz, i cable car e la costa del Pacifico — il posto perfetto per concludere il nostro viaggio di nozze.',
         photoAlt: 'Veduta di San Francisco',
       },
     },
@@ -111,7 +111,7 @@ const it: Translations = {
     placeholder: 'Segnaposto foto',
   },
   footer: {
-    thankYou: 'Grazie',
+    thankYou: 'Grazie di cuore!',
     seeYouSoon: 'A presto',
   },
 };
