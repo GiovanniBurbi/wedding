@@ -23,7 +23,6 @@ const travelModeIcons: Record<string, IconDefinition> = {
 
 export default function DestinationCard({
   cityKey,
-  descriptionKey,
   travelMode,
   photoSrc,
   photoAlt,
