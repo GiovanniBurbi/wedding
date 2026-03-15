@@ -1,0 +1,134 @@
+.hero {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: var(--space-xl) var(--content-padding);
+  text-align: center;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background-image: var(--hero-bg-image);
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px);
+  z-index: 0;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(250, 248, 245, 0.2);
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  max-width: 600px;
+  width: 100%;
+}
+
+.photo {
+  width: 200px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.names {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  margin: 0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ampersand {
+  display: block;
+  font-size: var(--font-size-2xl);
+  color: #e8d5a3;
+  font-weight: var(--font-weight-normal);
+  margin: var(--space-xs) 0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.date {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-lg);
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.countdownNumber {
+  font-family: var(--font-serif);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: #e8d5a3;
+  line-height: 1;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.countdownLabel {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 767px) {
+  .hero {
+    height: 100vh;
+    padding: var(--space-lg) var(--content-padding);
+  }
+
+  .content {
+    gap: var(--space-md);
+  }
+
+  .photo {
+    width: 220px;
+  }
+
+  .names {
+    font-size: var(--font-size-3xl);
+  }
+
+  .ampersand {
+    font-size: var(--font-size-xl);
+  }
+
+  .date {
+    font-size: var(--font-size-md);
+  }
+
+  .countdownNumber {
+    font-size: var(--font-size-3xl);
+  }
+}

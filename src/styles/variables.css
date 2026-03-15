@@ -1,0 +1,70 @@
+/* Wedding Color Palette & Typography Tokens */
+:root {
+  /* --- Colors --- */
+  --color-cream: #faf8f5;
+  --color-ivory: #f5f0eb;
+  --color-linen: #ede7df;
+  --color-champagne: #c9a96e;
+  --color-gold: #b8943e;
+  --color-gold-light: #d4b978;
+  --color-charcoal: #3a3a3a;
+  --color-dark: #2c2c2c;
+  --color-muted: #6b6b6b;
+  --color-soft-gray: #9a9a9a;
+  --color-border: #e0d8cf;
+  --color-white: #ffffff;
+  --color-success: #5a8a5a;
+  --color-error: #a85454;
+
+  /* --- Typography --- */
+  --font-serif: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+  --font-sans: 'Lato', 'Helvetica Neue', 'Arial', sans-serif;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-4xl: 3.5rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.6;
+  --line-height-relaxed: 1.8;
+
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.05em;
+  --letter-spacing-wider: 0.1em;
+
+  /* --- Spacing --- */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+
+  /* --- Layout --- */
+  --max-width: 1200px;
+  --content-padding: var(--space-lg);
+
+  /* --- Borders & Radius --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* --- Transitions --- */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+}
