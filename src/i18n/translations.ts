@@ -7,7 +7,6 @@ export interface Translations {
     map: string;
     rsvp: string;
     honeymoon: string;
-    gift: string;
   };
   // Hero
   hero: {
@@ -37,7 +36,6 @@ export interface Translations {
   };
   // Gift
   gift: {
-    heading: string;
     message: string;
     accountOwner: string;
     copied: string;

@@ -5,8 +5,7 @@ const it: Translations = {
     schedule: 'Programma',
     map: 'Mappa',
     rsvp: 'RSVP',
-    honeymoon: 'Luna di Miele',
-    gift: 'Contributo',
+    honeymoon: 'Luna di Miele'
   },
   hero: {
     photoAlt: 'Foto degli sposi',
@@ -32,7 +31,6 @@ const it: Translations = {
     buttonLabel: 'RSVP',
   },
   gift: {
-    heading: 'Contributo',
     message:
       "Per chi desidera farci un regalo può contribuire alla nostra luna di miele in Canada e Stati Uniti",
     accountOwner: 'Intestatario',

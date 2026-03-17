@@ -10,12 +10,11 @@ export default function GiftSection() {
 
   return (
     <section
-      id="gift"
+      id="trip"
       className={styles.section}
       style={{ '--gift-bg-image': `url(${giftBackground})` } as React.CSSProperties}
     >
       <div className={styles.card}>
-        <h2 className={styles.heading}>{t.gift.heading}</h2>
         <div className={styles.content}>
           <p className={styles.message}>{t.gift.message}</p>
           <div className={styles.bankDetails}>

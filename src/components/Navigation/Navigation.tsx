@@ -1,4 +1,5 @@
 import { useCallback, useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import styles from './Navigation.module.css';
@@ -15,19 +16,9 @@ export default function Navigation({ sections }: NavigationProps) {
 
   useEffect(() => {
     if (isOpen) {
-      const scrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.left = '0';
-      document.body.style.right = '0';
       document.body.style.overflow = 'hidden';
       return () => {
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.left = '';
-        document.body.style.right = '';
         document.body.style.overflow = '';
-        window.scrollTo(0, scrollY);
       };
     }
   }, [isOpen]);
@@ -36,16 +27,19 @@ export default function Navigation({ sections }: NavigationProps) {
     (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
       e.preventDefault();
       setIsOpen(false);
-      const target = document.getElementById(id);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
+      // Small delay to let body scroll lock release before scrolling
+      setTimeout(() => {
+        const target = document.getElementById(id);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 50);
     },
     []
   );
 
-  return (
-    <nav className={styles.nav} aria-label="Wedding sections">
+  const mobileMenu = (
+    <>
       <button
         className={styles.hamburger}
         onClick={() => setIsOpen(!isOpen)}
@@ -60,7 +54,27 @@ export default function Navigation({ sections }: NavigationProps) {
         <div className={styles.overlay} onClick={() => setIsOpen(false)} />
       )}
 
-      <ul className={`${styles.list} ${isOpen ? styles.listOpen : ''}`}>
+      <ul className={`${styles.mobileList} ${isOpen ? styles.listOpen : ''}`}>
+        {sections.map((section) => (
+          <li key={section.id} className={styles.item}>
+            <a
+              href={`#${section.id}`}
+              className={styles.mobileLink}
+              onClick={(e) => handleClick(e, section.id)}
+            >
+              {section.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+
+  return (
+    <nav className={styles.nav} aria-label="Wedding sections">
+      {createPortal(mobileMenu, document.body)}
+
+      <ul className={styles.list}>
         {sections.map((section) => (
           <li key={section.id} className={styles.item}>
             <a

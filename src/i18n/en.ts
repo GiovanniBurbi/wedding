@@ -5,8 +5,7 @@ const en: Translations = {
     schedule: 'Schedule',
     map: 'Map',
     rsvp: 'RSVP',
-    honeymoon: 'Honeymoon',
-    gift: 'Contribute',
+    honeymoon: 'Honeymoon'
   },
   hero: {
     photoAlt: 'Couple photo',
@@ -32,7 +31,6 @@ const en: Translations = {
     buttonLabel: 'RSVP',
   },
   gift: {
-    heading: 'Contribute',
     message:
       "If you would like to you can contribute to our honeymoon in Canada and United States",
     accountOwner: 'Account Owner',

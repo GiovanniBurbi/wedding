@@ -120,6 +120,7 @@ button:focus-visible {
   html {
     scroll-snap-type: none;
   }
+
   :root {
     --font-size-4xl: 2.25rem;
     --font-size-3xl: 1.75rem;

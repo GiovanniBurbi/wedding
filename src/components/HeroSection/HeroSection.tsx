@@ -3,7 +3,7 @@ import weddingConfig from '../../config/weddingConfig';
 import { useLanguage } from '../../i18n/LanguageContext';
 import PhotoPlaceholder from '../PhotoPlaceholder/PhotoPlaceholder';
 import Navigation from '../Navigation/Navigation';
-import flowersImage from '../../assets/flowers.jpg';
+import flowersImage from '../../assets/wedding-flowers.jpg';
 import styles from './HeroSection.module.css';
 
 export default function HeroSection() {
@@ -24,7 +24,6 @@ export default function HeroSection() {
     { id: 'map', label: t.nav.map },
     { id: 'party', label: t.nav.rsvp },
     { id: 'honeymoon', label: t.nav.honeymoon },
-    { id: 'gift', label: t.nav.gift },
   ];
 
   return (

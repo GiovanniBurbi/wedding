@@ -45,7 +45,8 @@
 
 .message {
   font-family: var(--font-sans);
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
   color: var(--color-charcoal);
   line-height: var(--line-height-relaxed);
   margin-bottom: var(--space-2xl);
