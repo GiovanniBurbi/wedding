@@ -22,7 +22,7 @@ export default function HeroSection() {
   const sections = [
     { id: 'schedule', label: t.nav.schedule },
     { id: 'map', label: t.nav.map },
-    { id: 'party', label: t.nav.rsvp },
+    { id: 'rsvp', label: t.nav.rsvp },
     { id: 'honeymoon', label: t.nav.honeymoon },
   ];
 

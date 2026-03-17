@@ -4,8 +4,8 @@ import Navigation from './Navigation';
 
 const sections = [
   { id: 'schedule', label: 'Schedule' },
-  { id: 'party', label: 'Party' },
-  { id: 'gift', label: 'Gift' },
+  { id: 'rsvp', label: 'Rsvp' },
+  { id: 'honeymoon', label: 'Honeymoon' },
 ];
 
 describe('Navigation', () => {
@@ -35,8 +35,8 @@ describe('Navigation', () => {
 
     render(<Navigation sections={sections} />);
 
-    const link = screen.getByRole('link', { name: 'Schedule' });
-    fireEvent.click(link);
+    const link = screen.getAllByRole('link', { name: 'Schedule' });
+    fireEvent.click(link[0]);
 
     expect(mockScrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
 

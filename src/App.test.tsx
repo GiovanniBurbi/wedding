@@ -22,13 +22,12 @@ describe('App', () => {
     // All section anchors present
     expect(document.getElementById('schedule')).toBeInTheDocument()
     expect(document.getElementById('map')).toBeInTheDocument()
-    expect(document.getElementById('party')).toBeInTheDocument()
+    expect(document.getElementById('rsvp')).toBeInTheDocument()
     expect(document.getElementById('honeymoon')).toBeInTheDocument()
-    expect(document.getElementById('gift')).toBeInTheDocument()
 
     // Sections appear in correct order
     const sections = document.querySelectorAll('section')
     const ids = Array.from(sections).map(s => s.id).filter(Boolean)
-    expect(ids).toEqual(['schedule', 'map', 'party', 'honeymoon', 'gift'])
+    expect(ids).toEqual(['schedule', 'map', 'rsvp', 'honeymoon'])
   })
 })

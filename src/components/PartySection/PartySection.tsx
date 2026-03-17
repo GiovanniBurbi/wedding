@@ -10,7 +10,7 @@ export default function PartySection() {
 
   return (
     <section
-      id="party"
+      id="rsvp"
       className={styles.section}
       style={{ '--party-bg-image': `url(${ringsImage})` } as React.CSSProperties}
     >

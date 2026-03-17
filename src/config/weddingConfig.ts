@@ -73,7 +73,7 @@ const weddingConfig: WeddingConfig = {
   sections: [
     { id: "schedule", label: "Schedule" },
     { id: "map", label: "Map" },
-    { id: "party", label: "RSVP" },
+    { id: "rsvp", label: "RSVP" },
     { id: "honeymoon", label: "Honeymoon" },
     { id: "gift", label: "Gift" },
   ],
