@@ -5,7 +5,7 @@ const it: Translations = {
     schedule: 'Programma',
     map: 'Mappa',
     rsvp: 'RSVP',
-    honeymoon: 'Luna di Miele'
+    honeymoon: 'Viaggio di Nozze'
   },
   hero: {
     photoAlt: 'Foto degli sposi',
@@ -32,13 +32,13 @@ const it: Translations = {
   },
   gift: {
     message:
-      "Per chi desidera farci un regalo può contribuire alla nostra luna di miele in Canada e Stati Uniti",
+      "Per chi desidera farci un regalo può contribuire al nostro viaggio di nozze in Canada e Stati Uniti",
     accountOwner: 'Intestatario',
     copied: 'Copiato!',
     copyLabel: 'Copia',
   },
   honeymoon: {
-    heading: 'La Nostra Luna di Miele',
+    heading: 'Il Nostro Viaggio di Nozze',
     intro:
       'Dopo il matrimonio partiremo per un\'avventura attraverso il Canada e gli Stati Uniti. Seguite il nostro viaggio tra città vivaci e paesaggi mozzafiato.',
     fallback:
