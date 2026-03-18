@@ -7,6 +7,7 @@ import PartySection from './components/PartySection/PartySection'
 import HoneymoonSection from './components/HoneymoonSection/HoneymoonSection'
 import GiftSection from './components/GiftSection/GiftSection'
 import PhotoPlaceholder from './components/PhotoPlaceholder/PhotoPlaceholder'
+import couple2 from './assets/couple-2.jpg'
 
 function ThankYouFooter() {
   const { t } = useLanguage();
@@ -26,7 +27,7 @@ function ThankYouFooter() {
         overflow: 'hidden',
         boxShadow: '0 4px 24px rgba(0, 0, 0, 0.08)',
       }}>
-        <PhotoPlaceholder alt={t.hero.photoAlt} aspectRatio="4/3" />
+        <PhotoPlaceholder src={couple2} alt={t.hero.photoAlt} aspectRatio="4/3" />
       </div>
       <p style={{
         fontFamily: 'var(--font-serif)',

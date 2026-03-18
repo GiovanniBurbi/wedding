@@ -2,6 +2,8 @@ import montrealPhoto from '../assets/montreal.jpg';
 import niagaraFallsPhoto from '../assets/niagara-falls-high.jpg';
 import chicagoBeanPhoto from '../assets/chicago-bean.jpg';
 import sanFranciscoPhoto from '../assets/san-francisco.jpg';
+import couple1 from '../assets/couple-1.jpg';
+import church from '../assets/church.jpg';
 
 export interface HoneymoonDestination {
   cityKey: string;
@@ -67,7 +69,7 @@ const weddingConfig: WeddingConfig = {
   date: "June 28, 2026",
   weddingDate: "2026-06-28",
   hero: {
-    photoSrc: undefined,
+    photoSrc: couple1,
     photoAlt: "Couple photo",
   },
   sections: [
@@ -91,7 +93,7 @@ const weddingConfig: WeddingConfig = {
       mapsUrl: "https://maps.google.com/?q=Via+Collina+62+50026+San+Casciano+in+Val+di+Pesa+FI+Italy",
       coordinates: [43.6296805, 11.1949004],
     },
-    photoSrc: undefined,
+    photoSrc: church,
     photoAlt: "Schedule photo",
   },
   party: {

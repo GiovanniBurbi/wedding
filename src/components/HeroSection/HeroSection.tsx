@@ -1,14 +1,27 @@
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect, useCallback } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import weddingConfig from '../../config/weddingConfig';
 import { useLanguage } from '../../i18n/LanguageContext';
 import PhotoPlaceholder from '../PhotoPlaceholder/PhotoPlaceholder';
 import Navigation from '../Navigation/Navigation';
 import flowersImage from '../../assets/wedding-flowers.jpg';
+import verticalFlower from '../../assets/flowers-vertical.jpg';
 import styles from './HeroSection.module.css';
 
 export default function HeroSection() {
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
   const { couple, hero, weddingDate } = weddingConfig;
   const { t } = useLanguage();
+
+  const handleScroll = useCallback(() => {
+    setShowScrollIndicator(window.scrollY <= 50);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
 
   const daysRemaining = useMemo(() => {
     const wedding = new Date(weddingDate);
@@ -29,16 +42,19 @@ export default function HeroSection() {
   return (
     <section
       className={styles.hero}
-      style={{ '--hero-bg-image': `url(${flowersImage})` } as React.CSSProperties}
+      style={{
+        '--hero-bg-desktop': `url(${flowersImage})`,
+        '--hero-bg-mobile': `url(${verticalFlower})`,
+      } as React.CSSProperties}
     >
+      <div className={styles.photo}>
+        <PhotoPlaceholder
+          src={hero.photoSrc}
+          alt={t.hero.photoAlt}
+          aspectRatio="3/4"
+        />
+      </div>
       <div className={styles.content}>
-        <div className={styles.photo}>
-          <PhotoPlaceholder
-            src={hero.photoSrc}
-            alt={t.hero.photoAlt}
-            aspectRatio="3/4"
-          />
-        </div>
         <h1 className={styles.names}>
           {couple.name1} <span className={styles.ampersand}>&amp;</span> {couple.name2}
         </h1>
@@ -53,7 +69,12 @@ export default function HeroSection() {
             <span className={styles.countdownLabel}>{t.hero.wereMarried}</span>
           )}
         </div>
-        <Navigation sections={sections} />
+        <div className={styles.navWrapper}>
+          <Navigation sections={sections} />
+        </div>
+      </div>
+      <div className={`${styles.scrollIndicator} ${!showScrollIndicator ? styles.hidden : ''}`}>
+        <FontAwesomeIcon icon={faChevronDown} className={styles.bounceIcon} />
       </div>
     </section>
   );
