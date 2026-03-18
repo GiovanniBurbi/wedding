@@ -2,22 +2,24 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
   height: 100vh;
-  padding: var(--space-xl) var(--content-padding) var(--space-3xl);
+  height: 100dvh;
+  padding: var(--space-xl) var(--content-padding) var(--space-sm);
   text-align: center;
   overflow: hidden;
   scroll-snap-align: start;
+  gap: var(--space-sm);
 }
 
 .hero::before {
   content: '';
   position: absolute;
-  inset: -20px;
-  background-image: var(--hero-bg-image);
+  inset: -10px;
+  background-image: var(--hero-bg-desktop);
   background-size: cover;
-  background-position: center 20%;
+  background-position: center center;
   z-index: 0;
   animation: slowZoom 20s infinite alternate;
 }
@@ -32,7 +34,6 @@
     rgba(0, 0, 0, 0.4) 40%,
     rgba(0, 0, 0, 0.7) 100%
   );
-  /* background-color: rgba(0, 0, 0, 0.50); */
   z-index: 0;
 }
 
@@ -43,16 +44,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-grow: 1;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   max-width: 600px;
   width: 100%;
+  flex-shrink: 0;
 }
 
 .photo {
-  width: 180px;
+  width: 220px;
+  aspect-ratio: 3 / 4;
   z-index: 2;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-height: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
@@ -61,7 +64,7 @@
 
 .names {
   font-family: var(--font-serif);
-  font-size: var(--font-size-4xl);
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
   font-weight: var(--font-weight-bold);
   color: var(--color-white);
   line-height: var(--line-height-tight);
@@ -72,42 +75,39 @@
 
 .ampersand {
   display: block;
-  font-size: var(--font-size-2xl);
+  font-size: clamp(1.5rem, 4vw, 2rem);
   color: #e8d5a3;
   font-weight: var(--font-weight-normal);
-  margin: var(--space-xs) 0;
+  margin: 0;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   opacity: 0;
-  animation: fadeInUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-  animation-delay: 0.2s;
+  animation: fadeInUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s forwards;
 }
 
 .date {
   font-family: var(--font-sans);
-  font-size: var(--font-size-lg);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
   color: #ffffff;
   letter-spacing: var(--letter-spacing-wider);
   text-transform: uppercase;
   margin: 0;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   opacity: 0;
-  animation: fadeInUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-  animation-delay: 0.5s;
+  animation: fadeInUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s forwards;
 }
 
 .countdown {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-xs);
+  gap: 2px;
   opacity: 0;
-  animation: fadeInUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-  animation-delay: 0.8s;
+  animation: fadeInUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) 0.8s forwards;
 }
 
 .countdownNumber {
   font-family: var(--font-serif);
-  font-size: var(--font-size-4xl);
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
   font-weight: var(--font-weight-bold);
   color: #e8d5a3;
   line-height: 1;
@@ -116,48 +116,35 @@
 
 .countdownLabel {
   font-family: var(--font-sans);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   color: #ffffff;
   letter-spacing: var(--letter-spacing-wider);
   text-transform: uppercase;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* --- The Nav Bar Fade-In --- */
 .navWrapper {
   opacity: 0;
-  animation: fadeInUp 1s ease-out forwards;
-  animation-delay: 1.2s; /* Appears last, after the names/date */
+  animation: fadeInUp 1s ease-out 1.2s forwards;
   width: 100%;
-  margin-top: var(--space-md);
 }
 
-/* --- Fixed Scroll Indicator Placement --- */
 .scrollIndicator {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
   color: #ffffff;
-  z-index: 10;
   transition: opacity 0.5s ease;
   pointer-events: none;
+  flex-shrink: 0;
 }
 
-.scrollText {
-  font-family: var(--font-sans);
-  font-size: 10px; /* Small and elegant */
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  opacity: 0.6;
-  margin-bottom: -5px;
+.scrollIndicator.hidden {
+  opacity: 0;
 }
 
-/* Ensure the bounce doesn't hit the text */
 .bounceIcon {
   font-size: 1.2rem;
   color: var(--color-gold);
@@ -170,7 +157,6 @@
   60% { transform: translateY(-4px); }
 }
 
-/* Re-using the fadeInUp from previous step */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -187,17 +173,6 @@
   to { transform: scale(1.05); }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @keyframes photoGrow {
   from {
     opacity: 0;
@@ -211,36 +186,16 @@
 
 @media (max-width: 767px) {
   .hero {
-    height: 100vh;
-    padding: var(--space-lg) var(--content-padding);
+    padding: var(--space-md) var(--content-padding) var(--space-sm);
   }
 
   .hero::before {
-    background-position: center 60%;
-    background-size: auto 110%;
-  }
-
-  .content {
-    gap: var(--space-xs);
+    background-image: var(--hero-bg-mobile);
+    background-position: center center;
+    background-size: cover;
   }
 
   .photo {
-    width: 220px;
-  }
-
-  .names {
-    font-size: var(--font-size-3xl);
-  }
-
-  .ampersand {
-    font-size: var(--font-size-xl);
-  }
-
-  .date {
-    font-size: var(--font-size-md);
-  }
-
-  .countdownNumber {
-    font-size: var(--font-size-3xl);
+    width: clamp(180px, 20vmin, 200px);
   }
 }

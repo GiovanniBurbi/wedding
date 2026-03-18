@@ -24,7 +24,8 @@ describe('Navigation', () => {
     expect(screen.queryAllByRole('link')).toHaveLength(0);
   });
 
-  it('calls scrollIntoView with smooth behavior on click', () => {
+  it('calls scrollIntoView with smooth behavior on click', async () => {
+    vi.useFakeTimers();
     const mockScrollIntoView = vi.fn();
 
     // Create a target element in the DOM
@@ -38,9 +39,13 @@ describe('Navigation', () => {
     const link = screen.getAllByRole('link', { name: 'Schedule' });
     fireEvent.click(link[0]);
 
+    // scrollIntoView is called inside a setTimeout(50)
+    vi.advanceTimersByTime(50);
+
     expect(mockScrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
 
     document.body.removeChild(target);
+    vi.useRealTimers();
   });
 
   it('has an accessible navigation landmark', () => {

@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback, useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -13,115 +13,131 @@ interface NavigationProps {
 
 export default function Navigation({ sections }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>('');
+  const [activeSection, setActiveSection] = useState('');
+  const menuRef = useRef<HTMLUListElement>(null);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
 
-  // 1. Scroll Spy Logic: Detect which section is in view
+  // Scroll spy
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      // This margin creates a "trigger zone" at the top of the viewport
-      rootMargin: '-20% 0px -70% 0px',
-      threshold: 0,
-    };
+    if (typeof IntersectionObserver === 'undefined') return;
 
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
         }
-      });
-    };
+      },
+      { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+    );
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    sections.forEach((section) => {
-      const element = document.getElementById(section.id);
-      if (element) observer.observe(element);
+    sections.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
     });
 
     return () => observer.disconnect();
   }, [sections]);
 
-  // 2. Lock body scroll when mobile menu is open
+  // Lock body scroll + close on Escape
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      return () => {
-        document.body.style.overflow = '';
-      };
+    if (!isOpen) return;
+
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen]);
+
+  // Return focus to hamburger when menu closes
+  useEffect(() => {
+    if (!isOpen) {
+      hamburgerRef.current?.focus();
     }
   }, [isOpen]);
 
-  const handleClick = useCallback(
+  const scrollTo = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
       e.preventDefault();
       setIsOpen(false);
-      
-      // Small delay to let body scroll lock release for smoother animation
       setTimeout(() => {
-        const target = document.getElementById(id);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
       }, 50);
     },
     []
   );
 
-  const mobileMenu = (
-    <>
-      <button
-        className={styles.hamburger}
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label={isOpen ? 'Close menu' : 'Open menu'}
-        aria-expanded={isOpen}
-        type="button"
-      >
-        <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
-      </button>
-
-      {isOpen && (
-        <div className={styles.overlay} onClick={() => setIsOpen(false)} />
-      )}
-
-      <ul className={`${styles.mobileList} ${isOpen ? styles.listOpen : ''}`}>
-        {sections.map((section) => (
-          <li key={section.id} className={styles.item}>
-            <a
-              href={`#${section.id}`}
-              className={`${styles.mobileLink} ${
-                activeSection === section.id ? styles.active : ''
-              }`}
-              onClick={(e) => handleClick(e, section.id)}
-            >
-              {section.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </>
-  );
+  const close = useCallback(() => setIsOpen(false), []);
+  const toggle = useCallback(() => setIsOpen((prev) => !prev), []);
 
   return (
     <nav className={styles.nav} aria-label="Wedding sections">
-      {/* Portals render the mobile menu at the body level to avoid Z-index issues */}
-      {typeof document !== 'undefined' && createPortal(mobileMenu, document.body)}
-
+      {/* Desktop links */}
       <ul className={styles.list}>
         {sections.map((section) => (
           <li key={section.id} className={styles.item}>
             <a
               href={`#${section.id}`}
-              className={`${styles.link} ${
-                activeSection === section.id ? styles.active : ''
-              }`}
-              onClick={(e) => handleClick(e, section.id)}
+              className={`${styles.link} ${activeSection === section.id ? styles.active : ''}`}
+              onClick={(e) => scrollTo(e, section.id)}
             >
               {section.label}
             </a>
           </li>
         ))}
       </ul>
+
+      {/* Mobile menu — portaled to body to avoid z-index issues */}
+      {typeof document !== 'undefined' &&
+        createPortal(
+          <div
+            className={`${styles.mobileMenu} ${isOpen ? styles.menuOpen : ''}`}
+            aria-hidden={!isOpen}
+          >
+            <button
+              ref={hamburgerRef}
+              className={styles.hamburger}
+              onClick={toggle}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isOpen}
+              type="button"
+            >
+              <FontAwesomeIcon icon={isOpen ? faTimes : faBars} />
+            </button>
+
+            <div className={styles.overlay} onClick={close} />
+
+            <ul ref={menuRef} className={styles.mobileList} role="menu">
+              {sections.map((section, i) => (
+                <li
+                  key={section.id}
+                  className={styles.mobileItem}
+                  style={{ '--item-index': i } as React.CSSProperties}
+                  role="none"
+                >
+                  <a
+                    href={`#${section.id}`}
+                    role="menuitem"
+                    className={`${styles.mobileLink} ${activeSection === section.id ? styles.active : ''}`}
+                    onClick={(e) => scrollTo(e, section.id)}
+                    tabIndex={isOpen ? 0 : -1}
+                  >
+                    {section.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>,
+          document.body
+        )}
     </nav>
   );
 }
