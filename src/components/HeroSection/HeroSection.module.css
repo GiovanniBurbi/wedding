@@ -1,10 +1,11 @@
 .hero {
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   height: 100vh;
-  padding: var(--space-xl) var(--content-padding);
+  padding: var(--space-xl) var(--content-padding) var(--space-3xl);
   text-align: center;
   overflow: hidden;
   scroll-snap-align: start;
@@ -16,15 +17,22 @@
   inset: -20px;
   background-image: var(--hero-bg-image);
   background-size: cover;
-  background-position: center;
+  background-position: center 20%;
   z-index: 0;
+  animation: slowZoom 20s infinite alternate;
 }
 
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.50);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  /* background-color: rgba(0, 0, 0, 0.50); */
   z-index: 0;
 }
 
@@ -34,16 +42,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-lg);
+  justify-content: center;
+  flex-grow: 1;
+  gap: var(--space-md);
   max-width: 600px;
   width: 100%;
 }
 
 .photo {
-  width: 200px;
+  width: 180px;
+  z-index: 2;
+  flex-shrink: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  animation: photoGrow 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 .names {
@@ -64,6 +77,9 @@
   font-weight: var(--font-weight-normal);
   margin: var(--space-xs) 0;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  animation: fadeInUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  animation-delay: 0.2s;
 }
 
 .date {
@@ -74,6 +90,9 @@
   text-transform: uppercase;
   margin: 0;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  animation: fadeInUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  animation-delay: 0.5s;
 }
 
 .countdown {
@@ -81,6 +100,9 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-xs);
+  opacity: 0;
+  animation: fadeInUp 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  animation-delay: 0.8s;
 }
 
 .countdownNumber {
@@ -101,14 +123,105 @@
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* --- The Nav Bar Fade-In --- */
+.navWrapper {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 1.2s; /* Appears last, after the names/date */
+  width: 100%;
+  margin-top: var(--space-md);
+}
+
+/* --- Fixed Scroll Indicator Placement --- */
+.scrollIndicator {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #ffffff;
+  z-index: 10;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.scrollText {
+  font-family: var(--font-sans);
+  font-size: 10px; /* Small and elegant */
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: -5px;
+}
+
+/* Ensure the bounce doesn't hit the text */
+.bounceIcon {
+  font-size: 1.2rem;
+  color: var(--color-gold);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
+
+/* Re-using the fadeInUp from previous step */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slowZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes photoGrow {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 @media (max-width: 767px) {
   .hero {
     height: 100vh;
     padding: var(--space-lg) var(--content-padding);
   }
 
+  .hero::before {
+    background-position: center 60%;
+    background-size: auto 110%;
+  }
+
   .content {
-    gap: var(--space-md);
+    gap: var(--space-xs);
   }
 
   .photo {

@@ -13,7 +13,36 @@ interface NavigationProps {
 
 export default function Navigation({ sections }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('');
 
+  // 1. Scroll Spy Logic: Detect which section is in view
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      // This margin creates a "trigger zone" at the top of the viewport
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sections.forEach((section) => {
+      const element = document.getElementById(section.id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [sections]);
+
+  // 2. Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -27,7 +56,8 @@ export default function Navigation({ sections }: NavigationProps) {
     (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
       e.preventDefault();
       setIsOpen(false);
-      // Small delay to let body scroll lock release before scrolling
+      
+      // Small delay to let body scroll lock release for smoother animation
       setTimeout(() => {
         const target = document.getElementById(id);
         if (target) {
@@ -59,7 +89,9 @@ export default function Navigation({ sections }: NavigationProps) {
           <li key={section.id} className={styles.item}>
             <a
               href={`#${section.id}`}
-              className={styles.mobileLink}
+              className={`${styles.mobileLink} ${
+                activeSection === section.id ? styles.active : ''
+              }`}
               onClick={(e) => handleClick(e, section.id)}
             >
               {section.label}
@@ -72,14 +104,17 @@ export default function Navigation({ sections }: NavigationProps) {
 
   return (
     <nav className={styles.nav} aria-label="Wedding sections">
-      {createPortal(mobileMenu, document.body)}
+      {/* Portals render the mobile menu at the body level to avoid Z-index issues */}
+      {typeof document !== 'undefined' && createPortal(mobileMenu, document.body)}
 
       <ul className={styles.list}>
         {sections.map((section) => (
           <li key={section.id} className={styles.item}>
             <a
               href={`#${section.id}`}
-              className={styles.link}
+              className={`${styles.link} ${
+                activeSection === section.id ? styles.active : ''
+              }`}
               onClick={(e) => handleClick(e, section.id)}
             >
               {section.label}

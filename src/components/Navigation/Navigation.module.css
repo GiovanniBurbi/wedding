@@ -26,11 +26,12 @@
   color: #ffffff;
   text-decoration: none;
   padding: var(--space-xs) var(--space-sm);
-  transition: color var(--transition-fast);
+  transition: color 0.3s ease;
   position: relative;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
+/* Animated Underline Effect */
 .link::after {
   content: '';
   position: absolute;
@@ -39,21 +40,21 @@
   transform: translateX(-50%) scaleX(0);
   width: 100%;
   height: 1px;
-  background-color: var(--color-champagne);
-  transition: transform var(--transition-base);
+  background-color: var(--color-gold);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.link:hover,
-.link:focus-visible {
-  color: #e8d5a3;
+/* Active State for Desktop */
+.link.active {
+  color: var(--color-gold);
 }
 
-.link:hover::after,
-.link:focus-visible::after {
+.link.active::after,
+.link:hover::after {
   transform: translateX(-50%) scaleX(1);
 }
 
-/* Mobile portal elements — hidden on desktop */
+/* Mobile Portal Elements */
 .hamburger {
   display: none;
 }
@@ -75,21 +76,19 @@
   color: var(--color-muted);
   text-decoration: none;
   padding: var(--space-xs) var(--space-sm);
-  transition: color var(--transition-fast);
+  transition: all 0.3s ease;
 }
 
-.mobileLink:hover,
-.mobileLink:focus-visible {
+.mobileLink.active {
   color: var(--color-gold);
+  transform: scale(1.1); /* Subtle pop for active mobile link */
 }
 
 @media (max-width: 767px) {
-  /* Hide desktop nav on mobile */
   .list {
     display: none;
   }
 
-  /* Show mobile portal elements */
   .hamburger {
     display: flex;
     position: fixed;
@@ -99,19 +98,19 @@
     background-color: var(--color-cream);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     color: var(--color-muted);
     font-size: var(--font-size-xl);
     cursor: pointer;
+    transition: transform 0.2s ease;
   }
 
-  .hamburger:hover,
-  .hamburger:focus-visible {
-    color: var(--color-gold);
+  .hamburger:active {
+    transform: scale(0.9);
   }
 
   .overlay {
@@ -120,6 +119,8 @@
     inset: 0;
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 99999;
+    backdrop-filter: blur(2px); /* Modern touch */
+    animation: fadeIn 0.3s ease;
   }
 
   .mobileList {
@@ -127,23 +128,33 @@
     position: fixed;
     inset: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: var(--space-xl);
     background-color: var(--color-cream);
     z-index: 100000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity var(--transition-base);
-    padding: var(--space-3xl) var(--space-xl);
     list-style: none;
     margin: 0;
+
+    /* Transition logic: Fade and Slide */
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: 
+      opacity 0.4s ease, 
+      transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 
   .listOpen {
     opacity: 1;
+    transform: translateY(0);
     pointer-events: auto;
   }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
