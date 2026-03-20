@@ -1,11 +1,13 @@
 import { LanguageProvider, useLanguage } from './i18n/LanguageContext'
 import LanguageToggle from './components/LanguageToggle/LanguageToggle'
+import LoadingScreen from './components/LoadingScreen/LoadingScreen'
 import HeroSection from './components/HeroSection/HeroSection'
 import ScheduleSection from './components/ScheduleSection/ScheduleSection'
 import MapSection from './components/MapSection/MapSection'
 import PartySection from './components/PartySection/PartySection'
 import HoneymoonSection from './components/HoneymoonSection/HoneymoonSection'
 import GiftSection from './components/GiftSection/GiftSection'
+import FaqSection from './components/FaqSection/FaqSection'
 import PhotoPlaceholder from './components/PhotoPlaceholder/PhotoPlaceholder'
 import couple2 from './assets/couple-2.jpg'
 
@@ -47,16 +49,19 @@ function ThankYouFooter() {
 function App() {
   return (
     <LanguageProvider>
-      <LanguageToggle />
-      <div>
-        <HeroSection />
-        <ScheduleSection />
-        <MapSection />
-        <PartySection />
-        <HoneymoonSection />
-        <GiftSection />
-        <ThankYouFooter />
-      </div>
+      <LoadingScreen>
+        <LanguageToggle />
+        <div>
+          <HeroSection />
+          <ScheduleSection />
+          <MapSection />
+          <PartySection />
+          <HoneymoonSection />
+          <GiftSection />
+          <FaqSection />
+          <ThankYouFooter />
+        </div>
+      </LoadingScreen>
     </LanguageProvider>
   )
 }

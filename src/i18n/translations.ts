@@ -7,6 +7,7 @@ export interface Translations {
     map: string;
     rsvp: string;
     honeymoon: string;
+    faq: string;
   };
   // Hero
   hero: {
@@ -32,6 +33,7 @@ export interface Translations {
   rsvp: {
     heading: string;
     description: string;
+    deadline: string;
     buttonLabel: string;
   };
   // Gift
@@ -72,5 +74,10 @@ export interface Translations {
   footer: {
     thankYou: string;
     seeYouSoon: string;
+  };
+  // FAQ
+  faq: {
+    heading: string;
+    items: Array<{ question: string; answer: string }>;
   };
 }

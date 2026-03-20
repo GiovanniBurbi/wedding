@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from './PhotoPlaceholder.module.css';
 
 interface PhotoPlaceholderProps {
@@ -11,10 +12,18 @@ export default function PhotoPlaceholder({
   alt = '',
   aspectRatio = '4/3',
 }: PhotoPlaceholderProps) {
+  const [loaded, setLoaded] = useState(false);
+
   if (src) {
     return (
       <div className={styles.wrapper} style={{ aspectRatio }}>
-        <img className={styles.image} src={src} alt={alt} />
+        <img
+          className={`${styles.image} ${loaded ? styles.imageLoaded : ''}`}
+          src={src}
+          alt={alt}
+          loading="lazy"
+          onLoad={() => setLoaded(true)}
+        />
       </div>
     );
   }

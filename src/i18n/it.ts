@@ -5,7 +5,8 @@ const it: Translations = {
     schedule: 'Programma',
     map: 'Mappa',
     rsvp: 'RSVP',
-    honeymoon: 'Viaggio di Nozze'
+    honeymoon: 'Viaggio di Nozze',
+    faq: 'FAQ',
   },
   hero: {
     photoAlt: 'Foto degli sposi',
@@ -27,13 +28,14 @@ const it: Translations = {
   rsvp: {
     heading: 'Ci Sarai?',
     description:
-      'Saremmo felicissimi di averti con noi in questo giorno speciale. Facci sapere se sarai presente e condividi eventuali esigenze alimentari, così potremo accogliervi al meglio.',
+      'Saremmo felicissimi di avervi con noi in questo giorno speciale. Fateci sapere se sarete presenti e condividete eventuali esigenze alimentari, così potremo accogliervi al meglio.',
+    deadline: 'E\' gradita gentile conferma entro il 31 Maggio',
     buttonLabel: 'RSVP',
   },
   gift: {
     message:
-      "Per chi desidera farci un regalo può contribuire al nostro viaggio di nozze in Canada e Stati Uniti",
-    accountOwner: 'Intestatario',
+      "Chi desidera farci un regalo può contribuire al nostro viaggio di nozze in Canada e Stati Uniti",
+    accountOwner: 'Intestatari',
     copied: 'Copiato!',
     copyLabel: 'Copia',
   },
@@ -111,6 +113,16 @@ const it: Translations = {
   footer: {
     thankYou: 'Grazie di cuore!',
     seeYouSoon: 'A presto',
+  },
+  faq: {
+    heading: 'Domande Frequenti',
+    items: [
+      { question: 'Qual è il dress code?', answer: 'Suggeriamo un abbigliamento elegante formale. Vi chiediamo di evitare il bianco, il nero ed il rosso.' },
+      { question: 'Posso portare un accompagnatore?', answer: 'A causa dei posti limitati, possiamo accogliere solo le persone indicate nell\'invito. Controllate il vostro invito per i dettagli.' },
+      { question: 'E\' presente un parcheggio presso la location?', answer: 'Sì, il parcheggio è disponibile sia presso la chiesa che presso la location del ricevimento.' },
+      { question: 'A che ora devo arrivare?', answer: 'Vi consigliamo di arrivare in chiesa entro le 15:15 in modo che tutti siano seduti prima dell\'inizio della cerimonia alle 15:30.' },
+      { question: 'Posso fare foto e video?', answer: 'Certo, sentitevi liberi di scattare e condividere la gioia! Sappiate che il nostro fotografo e videomaker saranno presenti per catturare ogni momento della giornata, così potrete rilassarvi e godervi il momento quando preferite.' },
+    ],
   },
 };
 

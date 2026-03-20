@@ -5,7 +5,8 @@ const en: Translations = {
     schedule: 'Schedule',
     map: 'Map',
     rsvp: 'RSVP',
-    honeymoon: 'Honeymoon'
+    honeymoon: 'Honeymoon',
+    faq: 'FAQs',
   },
   hero: {
     photoAlt: 'Couple photo',
@@ -28,12 +29,13 @@ const en: Translations = {
     heading: 'Will You Be Joining Us?',
     description:
       "We would be delighted to have you celebrate this special day with us. Please let us know if you'll be joining and share any dietary needs so we can make sure everyone feels welcome at the table.",
+    deadline: 'We kindly ask you to confirm your attendance by May 31st',
     buttonLabel: 'RSVP',
   },
   gift: {
     message:
       "If you would like to you can contribute to our honeymoon in Canada and United States",
-    accountOwner: 'Account Owner',
+    accountOwner: 'Account Owners',
     copied: 'Copied!',
     copyLabel: 'Copy',
   },
@@ -111,6 +113,16 @@ const en: Translations = {
   footer: {
     thankYou: 'Thank you so much!',
     seeYouSoon: 'See you soon',
+  },
+  faq: {
+    heading: 'Frequently Asked Questions',
+    items: [
+      { question: 'What is the dress code?', answer: 'We suggest elegant formal attire. Please avoid wearing white, black, or red.' },
+      { question: 'Can I bring a plus one?', answer: 'Due to limited seating, we can only accommodate those named on the invitation. Please check your invite for details.' },
+      { question: 'Is there parking at the venue?', answer: 'Yes, parking is available at both the ceremony and reception venues.' },
+      { question: 'What time should I arrive?', answer: 'We recommend arriving at the church by 3:15 PM so everyone is seated before the ceremony begins at 3:30 PM.' },
+      { question: 'What about photos and videos?', answer: 'Feel free to snap away and share the joy! Just know that our photographer and videographer will be capturing every moment of the day, so you can relax and be fully present whenever you like.' },
+    ],
   },
 };
 

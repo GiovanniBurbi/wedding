@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import weddingConfig from '../../config/weddingConfig';
 import { useLanguage } from '../../i18n/LanguageContext';
+import { useImagesPreload } from '../../utils/useImagePreload';
 import PhotoPlaceholder from '../PhotoPlaceholder/PhotoPlaceholder';
 import Navigation from '../Navigation/Navigation';
 import flowersImage from '../../assets/wedding-flowers.jpg';
@@ -13,6 +14,9 @@ export default function HeroSection() {
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
   const { couple, hero, weddingDate } = weddingConfig;
   const { t } = useLanguage();
+
+  const bgSrcs = useMemo(() => [flowersImage, verticalFlower], []);
+  const bgReady = useImagesPreload(bgSrcs);
 
   const handleScroll = useCallback(() => {
     setShowScrollIndicator(window.scrollY <= 50);
@@ -37,11 +41,12 @@ export default function HeroSection() {
     { id: 'map', label: t.nav.map },
     { id: 'rsvp', label: t.nav.rsvp },
     { id: 'honeymoon', label: t.nav.honeymoon },
+    { id: 'faq', label: t.nav.faq },
   ];
 
   return (
     <section
-      className={styles.hero}
+      className={`${styles.hero} ${bgReady ? styles.bgReady : ''}`}
       style={{
         '--hero-bg-desktop': `url(${flowersImage})`,
         '--hero-bg-mobile': `url(${verticalFlower})`,

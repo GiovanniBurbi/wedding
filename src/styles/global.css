@@ -15,6 +15,11 @@ html {
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
   scroll-snap-type: y proximity;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -138,4 +143,21 @@ button:focus-visible {
     --font-size-4xl: 2.75rem;
     --font-size-3xl: 2rem;
   }
+}
+
+/* Loading spinner keyframe — used by inline-styled React loader */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Scroll-reveal animations */
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.reveal-fade-up.revealed {
+  opacity: 1;
+  transform: translateY(0);
 }

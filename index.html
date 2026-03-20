@@ -5,8 +5,48 @@
     <link rel="icon" type="image/svg+xml" href="/wedding.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Giovanni & Francesca</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" />
+    <style>
+      *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+      body { background-color: #faf8f5; }
+      #static-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background-color: #faf8f5;
+      }
+      #static-loader .spinner {
+        width: 36px;
+        height: 36px;
+        border: 3px solid #e0d8cf;
+        border-top-color: #b8943e;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      #static-loader .names {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 1.5rem;
+        color: #c9a96e;
+        letter-spacing: -0.02em;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
   </head>
   <body>
+    <div id="static-loader">
+      <div class="spinner"></div>
+      <span class="names">Giovanni & Francesca</span>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

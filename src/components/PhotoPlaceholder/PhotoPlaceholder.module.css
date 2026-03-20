@@ -3,6 +3,7 @@
   width: 100%;
   overflow: hidden;
   border-radius: var(--radius-md);
+  background-color: var(--color-ivory);
 }
 
 .placeholder {
@@ -39,4 +40,10 @@
   height: 100%;
   object-fit: cover;
   border-radius: var(--radius-md);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.imageLoaded {
+  opacity: 1;
 }

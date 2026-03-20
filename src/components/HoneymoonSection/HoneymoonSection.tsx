@@ -1,6 +1,7 @@
-import { Component, type ReactNode } from 'react';
+import { Component, type ReactNode, useEffect, useRef } from 'react';
 import weddingConfig from '../../config/weddingConfig';
 import { useLanguage } from '../../i18n/LanguageContext';
+import { useScrollReveal } from '../../utils/useScrollReveal';
 import DestinationCard from '../DestinationCard/DestinationCard';
 import TripMap from '../TripMap/TripMap';
 import type { TripStop } from '../TripMap/TripMap';
@@ -37,6 +38,31 @@ class MapErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState>
 export default function HoneymoonSection() {
   const { t } = useLanguage();
   const { destinations } = weddingConfig.honeymoon;
+  const headerRef = useScrollReveal<HTMLDivElement>();
+  const timelineRef = useRef<HTMLDivElement>(null);
+
+  // Staggered reveal for timeline items
+  useEffect(() => {
+    const container = timelineRef.current;
+    if (!container || typeof IntersectionObserver === 'undefined') return;
+
+    const items = container.querySelectorAll<HTMLElement>(`.${styles.timelineItem}`);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, [destinations]);
 
   const stops: TripStop[] = destinations.map((d) => ({
     position: d.coordinates,
@@ -50,21 +76,24 @@ export default function HoneymoonSection() {
       className={styles.section}
       style={{ '--honeymoon-bg-image': `url(${tripBackground})` } as React.CSSProperties}
     >
-      <div className={styles.headerCard}>
+      <div ref={headerRef} className={`${styles.headerCard} reveal-fade-up`}>
         <h2 className={styles.heading}>{t.honeymoon.heading}</h2>
         <p className={styles.intro}>{t.honeymoon.intro}</p>
       </div>
 
-      <div className={styles.timeline}>
+      <div ref={timelineRef} className={styles.timeline}>
         {destinations.map((dest, index) => {
           const destTranslations =
             t.honeymoon.destinations[dest.cityKey as keyof typeof t.honeymoon.destinations];
           return (
-            <div key={dest.cityKey} className={styles.timelineItem}>
+            <div
+              key={dest.cityKey}
+              className={`${styles.timelineItem} reveal-fade-up`}
+              style={{ transitionDelay: `${index * 0.08}s` }}
+            >
               <DestinationCard
                 cityKey={dest.cityKey}
                 descriptionKey={dest.cityKey}
-                travelMode={dest.travelModeFromPrev}
                 photoSrc={dest.photoSrc}
                 photoAlt={destTranslations?.photoAlt ?? dest.cityKey}
                 index={index}

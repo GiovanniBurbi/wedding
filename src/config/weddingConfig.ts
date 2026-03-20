@@ -99,7 +99,7 @@ const weddingConfig: WeddingConfig = {
   party: {
     description:
       "We would be delighted to have you celebrate this special day with us. Please let us know if you'll be joining and share any dietary needs so we can make sure everyone feels welcome at the table.",
-    dietaryFormUrl: "https://forms.google.com/your-form-id",
+    dietaryFormUrl: "https://cpb1l02r.forms.app/franci-gio",
     photoSrc: undefined,
     photoAlt: "Party venue photo",
   },
@@ -121,7 +121,7 @@ const weddingConfig: WeddingConfig = {
       "Your presence is the greatest gift. If you'd like to contribute, we're collecting for our honey moon trip to Canada and America.",
     iban: "IT93 Y036 6901 6001 7693 9250 436",
     swift: "REVOITM2",
-    accountOwner: "Giovanni Burbi and Francesca Del Lungo",
+    accountOwner: "Giovanni Burbi & Francesca Del Lungo",
   },
 };
 

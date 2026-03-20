@@ -7,6 +7,7 @@ vi.mock('react-leaflet', () => ({
   Marker: ({ children }: { children: React.ReactNode }) => <div data-testid="marker">{children}</div>,
   Popup: ({ children }: { children: React.ReactNode }) => <div data-testid="popup">{children}</div>,
   Polyline: () => <div data-testid="polyline" />,
+  Tooltip: ({ children }: { children: React.ReactNode }) => <div data-testid="tooltip">{children}</div>,
   useMap: () => ({ fitBounds: vi.fn() }),
 }))
 
@@ -28,6 +29,6 @@ describe('App', () => {
     // Sections appear in correct order
     const sections = document.querySelectorAll('section')
     const ids = Array.from(sections).map(s => s.id).filter(Boolean)
-    expect(ids).toEqual(['schedule', 'map', 'rsvp', 'honeymoon'])
+    expect(ids).toEqual(['schedule', 'map', 'rsvp', 'honeymoon', 'trip'])
   })
 })
