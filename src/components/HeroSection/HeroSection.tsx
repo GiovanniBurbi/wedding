@@ -40,7 +40,7 @@ export default function HeroSection() {
     { id: 'schedule', label: t.nav.schedule },
     { id: 'map', label: t.nav.map },
     { id: 'rsvp', label: t.nav.rsvp },
-    { id: 'honeymoon', label: t.nav.honeymoon },
+    { id: 'viaggio', label: t.nav.honeymoon },
     { id: 'faq', label: t.nav.faq },
   ];
 

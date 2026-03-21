@@ -1,4 +1,9 @@
 .section {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: var(--space-4xl) var(--content-padding);
   background-color: var(--color-cream);
   scroll-snap-align: start;

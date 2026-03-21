@@ -117,11 +117,11 @@ const en: Translations = {
   faq: {
     heading: 'Frequently Asked Questions',
     items: [
-      { question: 'What is the dress code?', answer: 'We suggest elegant formal attire. Please avoid wearing white, black, or red.' },
-      { question: 'Can I bring a plus one?', answer: 'Due to limited seating, we can only accommodate those named on the invitation. Please check your invite for details.' },
-      { question: 'Is there parking at the venue?', answer: 'Yes, parking is available at both the ceremony and reception venues.' },
+      { question: 'What is the dress code?', answer: 'We suggest elegant formal attire. For the ladies, please avoid wearing white, black, or red.' },
+      { question: 'Can I bring other guests?', answer: 'Due to limited seating, we can only accommodate those named on the invitation. Please check your invite for details.' },
+      { question: 'Is there parking at the venues?', answer: 'Yes, parking is available at both the ceremony and reception venues.' },
       { question: 'What time should I arrive?', answer: 'We recommend arriving at the church by 3:15 PM so everyone is seated before the ceremony begins at 3:30 PM.' },
-      { question: 'What about photos and videos?', answer: 'Feel free to snap away and share the joy! Just know that our photographer and videographer will be capturing every moment of the day, so you can relax and be fully present whenever you like.' },
+      { question: 'What about photos and videos?', answer: 'Feel free to snap away and share the joy! Just know that our photographer and videomaker will be capturing every moment of the day, so you can relax and enjoy the celebration.' },
     ],
   },
 };

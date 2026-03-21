@@ -11,7 +11,7 @@ import styles from './LoadingScreen.module.css';
 
 const sectionImages: Record<string, string[]> = {
   rsvp: [ringsImage],
-  honeymoon: [montrealPhoto, niagaraFallsPhoto, chicagoBeanPhoto, sanFranciscoPhoto],
+  viaggio: [montrealPhoto, niagaraFallsPhoto, chicagoBeanPhoto, sanFranciscoPhoto],
 };
 
 function getTargetSection(): string {

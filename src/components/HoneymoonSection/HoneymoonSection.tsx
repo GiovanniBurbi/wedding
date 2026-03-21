@@ -39,6 +39,7 @@ export default function HoneymoonSection() {
   const { t } = useLanguage();
   const { destinations } = weddingConfig.honeymoon;
   const headerRef = useScrollReveal<HTMLDivElement>();
+  const mapRef = useScrollReveal<HTMLDivElement>();
   const timelineRef = useRef<HTMLDivElement>(null);
 
   // Staggered reveal for timeline items
@@ -72,7 +73,7 @@ export default function HoneymoonSection() {
 
   return (
     <section
-      id="honeymoon"
+      id="viaggio"
       className={styles.section}
       style={{ '--honeymoon-bg-image': `url(${tripBackground})` } as React.CSSProperties}
     >
@@ -89,7 +90,7 @@ export default function HoneymoonSection() {
             <div
               key={dest.cityKey}
               className={`${styles.timelineItem} reveal-fade-up`}
-              style={{ transitionDelay: `${index * 0.08}s` }}
+              style={{ transitionDelay: `${index * 0.04}s` }}
             >
               <DestinationCard
                 cityKey={dest.cityKey}
@@ -104,7 +105,7 @@ export default function HoneymoonSection() {
         })}
       </div>
 
-      <div className={styles.mapWrapper}>
+      <div ref={mapRef} className={`${styles.mapWrapper} reveal-fade-up`}>
         <MapErrorBoundary
           fallback={<p className={styles.mapFallback}>{t.honeymoon.fallback}</p>}
         >
