@@ -16,19 +16,39 @@ export default function Navigation({ sections }: NavigationProps) {
   const [activeSection, setActiveSection] = useState('');
   const menuRef = useRef<HTMLUListElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const isClickScrolling = useRef(false);
 
   // Scroll spy
   useEffect(() => {
     if (typeof IntersectionObserver === 'undefined') return;
 
+    const visibleSections = new Set<string>();
+
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible.length > 0) {
-          setActiveSection(visible[0].target.id)
+        if (isClickScrolling.current) return;
+
+        for(const entry of entries) {
+          if (entry.isIntersecting) {
+            visibleSections.add(entry.target.id);
+          } else {
+            visibleSections.delete(entry.target.id);
+          }
+        }
+
+        if (visibleSections.size === 0) {
+          setActiveSection("");
+          return;
+        }
+
+        for (const { id } of sections) {
+          if (visibleSections.has(id)) {
+            setActiveSection(id);
+            return;
+          }
         }
       },
-      { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
+      { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
     );
 
     sections.forEach(({ id }) => {
@@ -68,8 +88,10 @@ export default function Navigation({ sections }: NavigationProps) {
       e.preventDefault();
       setIsOpen(false);
       setActiveSection(id);
+      isClickScrolling.current = true;
       setTimeout(() => {
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => { isClickScrolling.current = false }, 1000)
       }, 50);
     },
     []

@@ -2,7 +2,8 @@ import montrealPhoto from '../assets/montreal.jpg';
 import niagaraFallsPhoto from '../assets/niagara-falls-high.jpg';
 import chicagoBeanPhoto from '../assets/chicago-bean.jpg';
 import sanFranciscoPhoto from '../assets/san-francisco.jpg';
-import couple1 from '../assets/couple-1.jpg';
+// import couple1 from '../assets/couple-1.jpg';
+import firstImg from '../assets/first-image.jpg'
 import church from '../assets/church.jpg';
 
 export interface HoneymoonDestination {
@@ -69,7 +70,7 @@ const weddingConfig: WeddingConfig = {
   date: "June 28, 2026",
   weddingDate: "2026-06-28",
   hero: {
-    photoSrc: couple1,
+    photoSrc: firstImg,
     photoAlt: "Couple photo",
   },
   sections: [
