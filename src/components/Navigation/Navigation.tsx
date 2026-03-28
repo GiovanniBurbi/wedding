@@ -23,13 +23,12 @@ export default function Navigation({ sections }: NavigationProps) {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
+        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible.length > 0) {
+          setActiveSection(visible[0].target.id)
         }
       },
-      { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+      { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
     );
 
     sections.forEach(({ id }) => {
@@ -68,6 +67,7 @@ export default function Navigation({ sections }: NavigationProps) {
     (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
       e.preventDefault();
       setIsOpen(false);
+      setActiveSection(id);
       setTimeout(() => {
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
       }, 50);

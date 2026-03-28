@@ -71,7 +71,7 @@ export default function LoadingScreen({ children }: LoadingScreenProps) {
 
   // Preload images with a safety timeout
   useEffect(() => {
-    const timeout = setTimeout(() => setReady(true), 4000);
+    const timeout = setTimeout(() => setReady(true), 6000);
     preloadImages(imagesToLoad).then(() => {
       clearTimeout(timeout);
       setReady(true);

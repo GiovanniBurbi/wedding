@@ -5,12 +5,14 @@ interface PhotoPlaceholderProps {
   src?: string;
   alt?: string;
   aspectRatio?: string;
+  eager?: boolean;
 }
 
 export default function PhotoPlaceholder({
   src,
   alt = '',
   aspectRatio = '4/3',
+  eager=false
 }: PhotoPlaceholderProps) {
   const [loaded, setLoaded] = useState(false);
 
@@ -21,7 +23,7 @@ export default function PhotoPlaceholder({
           className={`${styles.image} ${loaded ? styles.imageLoaded : ''}`}
           src={src}
           alt={alt}
-          loading="lazy"
+          loading={eager ? 'eager' : "lazy"}
           onLoad={() => setLoaded(true)}
         />
       </div>

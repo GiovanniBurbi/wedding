@@ -57,6 +57,7 @@ export default function HeroSection() {
           src={hero.photoSrc}
           alt={t.hero.photoAlt}
           aspectRatio="3/4"
+          eager
         />
       </div>
       <div className={styles.content}>
