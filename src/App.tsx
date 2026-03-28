@@ -9,7 +9,7 @@ import HoneymoonSection from './components/HoneymoonSection/HoneymoonSection'
 import GiftSection from './components/GiftSection/GiftSection'
 import FaqSection from './components/FaqSection/FaqSection'
 import PhotoPlaceholder from './components/PhotoPlaceholder/PhotoPlaceholder'
-import couple2 from './assets/couple-2.jpg'
+import couple2 from './assets/footer-photo.jpg'
 
 function ThankYouFooter() {
   const { t } = useLanguage();
