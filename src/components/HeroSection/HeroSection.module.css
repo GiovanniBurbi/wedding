@@ -192,13 +192,16 @@
 
 @media (max-width: 767px) {
   .hero {
+    height: 100svh;
     padding: var(--space-md) var(--content-padding) var(--space-sm);
   }
 
   .hero::before {
+    inset: 0;
     background-image: var(--hero-bg-mobile);
     background-position: center center;
     background-size: cover;
+    animation: none;
   }
 
   .photo {
