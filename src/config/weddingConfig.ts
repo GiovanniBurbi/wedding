@@ -2,7 +2,6 @@ import montrealPhoto from '../assets/montreal.jpg';
 import niagaraFallsPhoto from '../assets/niagara-falls-high.jpg';
 import chicagoBeanPhoto from '../assets/chicago-bean.jpg';
 import sanFranciscoPhoto from '../assets/san-francisco.jpg';
-// import couple1 from '../assets/couple-1.jpg';
 import firstImg from '../assets/first-image.jpg'
 import church from '../assets/church.jpg';
 
