@@ -3,7 +3,7 @@ import niagaraFallsPhoto from '../assets/niagara-falls-high.jpg';
 import chicagoBeanPhoto from '../assets/chicago-bean.jpg';
 import sanFranciscoPhoto from '../assets/san-francisco.jpg';
 import firstImg from '../assets/first-image-new.jpg'
-import church from '../assets/church.jpg';
+import church from '../assets/flowers4.jpg';
 
 export interface HoneymoonDestination {
   cityKey: string;
