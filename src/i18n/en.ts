@@ -121,7 +121,7 @@ const en: Translations = {
       { question: 'Can I bring other guests?', answer: 'Due to limited seating, we can only accommodate those named on the invitation. Please check your invite for details.' },
       { question: 'Is there parking at the venues?', answer: 'Yes, parking is available at both the ceremony and reception venues.' },
       { question: 'What time should I arrive?', answer: 'We recommend arriving at the church by 3:15 PM so everyone is seated before the ceremony begins at 3:30 PM.' },
-      { question: 'What about photos and videos?', answer: 'Feel free to snap away and share the joy! Just know that our photographer and videomaker will be capturing every moment of the day, so you can relax and enjoy the celebration.' },
+      { question: 'What about photos and videos?', answer: 'Our photographer and videomaker will be capturing every moment of the day, so you can relax and enjoy the celebration.' },
     ],
   },
 };

@@ -121,7 +121,7 @@ const it: Translations = {
       { question: 'Posso portare un accompagnatore?', answer: 'A causa dei posti limitati, possiamo accogliere solo le persone indicate nell\'invito. Controllate il vostro invito per i dettagli.' },
       { question: 'E\' presente un parcheggio presso le location?', answer: 'Sì, il parcheggio è disponibile sia presso la chiesa che presso la location del ricevimento.' },
       { question: 'A che ora devo arrivare?', answer: 'Vi consigliamo di arrivare in chiesa entro le 15:15 in modo che tutti siano seduti prima dell\'inizio della cerimonia alle 15:30.' },
-      { question: 'Posso fare foto e video?', answer: 'Certo, sentitevi liberi di farlo e di condividere la gioia! Sappiate che i nostri fotografi e videomaker saranno presenti per catturare ogni momento della giornata, così potrete rilassarvi e godervi il momento.' },
+      { question: 'Posso fare foto e video?', answer: 'I nostri fotografi e videomaker saranno presenti per catturare ogni momento della giornata, così potrete rilassarvi e godervi il momento.' },
     ],
   },
 };

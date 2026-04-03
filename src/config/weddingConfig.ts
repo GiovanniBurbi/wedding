@@ -2,7 +2,7 @@ import montrealPhoto from '../assets/montreal.jpg';
 import niagaraFallsPhoto from '../assets/niagara-falls-high.jpg';
 import chicagoBeanPhoto from '../assets/chicago-bean.jpg';
 import sanFranciscoPhoto from '../assets/san-francisco.jpg';
-import firstImg from '../assets/first-image.jpg'
+import firstImg from '../assets/first-image-new.jpg'
 import church from '../assets/church.jpg';
 
 export interface HoneymoonDestination {
